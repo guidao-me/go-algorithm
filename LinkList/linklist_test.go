@@ -1,4 +1,4 @@
-package main
+package linklist
 
 import (
 	"fmt"
@@ -6,15 +6,11 @@ import (
 )
 
 func TestLinkList_Insert(t *testing.T) {
-	n1 := ListNode{1,nil}
-	n2 := ListNode{2,nil}
-	n3 := ListNode{3,nil}
-
 	list := NewLinkList()
 
-	list.Insert(0,&n1)
-	list.Insert(1,&n2)
-	list.Insert(2,&n3)
+	for i := 0; i < 10; i++{
+		list.Insert(uint(i),NewLinkNode(i+10))
+	}
 
 	list.Print()
 
@@ -24,21 +20,18 @@ func TestLinkList_Insert(t *testing.T) {
 }
 
 func TestLinkList_Delete(t *testing.T) {
-	n1 := ListNode{1,nil}
-	n2 := ListNode{2,nil}
-	n3 := ListNode{3,nil}
-
 	list := NewLinkList()
 
-	list.Insert(0,&n1)
-	list.Insert(1,&n2)
-	list.Insert(2,&n3)
+	for i := 0; i < 10; i++{
+		list.Insert(uint(i),NewLinkNode(i+10))
+	}
 
 	list.Print()
 
 	fmt.Println()
-	list.Delete(&n1)
-	list.Delete(&n2)
+	list.Delete(NewLinkNode(11))
+	list.Delete(NewLinkNode(10))
+	list.Delete(NewLinkNode(19))
 
 
 	list.Print()
@@ -46,21 +39,17 @@ func TestLinkList_Delete(t *testing.T) {
 
 
 func TestLinkList_FindByIndex(t *testing.T) {
-	n1 := ListNode{1,nil}
-	n2 := ListNode{2,nil}
-	n3 := ListNode{3,nil}
-
 	list := NewLinkList()
 
-	list.Insert(0,&n1)
-	list.Insert(1,&n2)
-	list.Insert(2,&n3)
+	for i := 0; i < 10; i++{
+		list.Insert(uint(i),NewLinkNode(i+10))
+	}
 
 	list.Print()
 
 	fmt.Println()
 
-	node, err := list.FindByIndex(1)
+	node, err := list.FindByIndex(0)
 	if err != nil {
 		t.Fatal(err)
 	}

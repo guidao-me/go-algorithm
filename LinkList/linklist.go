@@ -1,4 +1,4 @@
-package main
+package linklist
 
 import (
 	"errors"
@@ -19,6 +19,13 @@ func NewLinkList() *LinkList {
 	return &LinkList{
 		head:   &ListNode{0, nil},
 		length: 0,
+	}
+}
+
+func NewLinkNode(value interface{})*ListNode{
+	return &ListNode{
+		data:value,
+		next:nil,
 	}
 }
 
@@ -57,7 +64,7 @@ func (this *LinkList) Delete(node *ListNode)error{
 	cur := this.head.next
 
 	for nil != cur{
-		if cur == node {
+		if cur.data == node.data {
 			break
 		}
 		pre = cur
